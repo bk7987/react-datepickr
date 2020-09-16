@@ -4,31 +4,66 @@ import * as ReactDOM from 'react-dom';
 import { useDatepickr } from 'react-datepickr';
 
 const App = () => {
-  const { dates, currentDate } = useDatepickr({ dateDisplay: 'padded', rangeOverflow: 'dates' });
+  const {
+    dates,
+    currentDate,
+    displayDate,
+    onSelectNextRange,
+    onSelectPrevRange,
+    dayOfWeekLabels,
+    currentMonthLabel,
+    currentYearLabel,
+  } = useDatepickr({
+    padDates: true,
+    rangeOverflow: 'dates',
+  });
   return (
     <div>
       <input
         type="text"
         readOnly
+        value={displayDate}
         style={{ padding: '0.5rem', border: '1px solid gray', borderRadius: '0.25rem' }}
       />
+      <div style={{ margin: '1rem' }}>
+        <button onClick={onSelectPrevRange}>Prev Month</button>
+        <button onClick={onSelectNextRange}>Next Month</button>
+      </div>
       <div>
-        {dates.map(({ key, label, onClick }) => (
+        {currentMonthLabel} {currentYearLabel}
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {dayOfWeekLabels.map((label, i) => (
           <div
-            onClick={onClick}
-            key={key}
+            key={i}
             style={{
-              display: 'inline-block',
-              padding: '0.5rem',
-              margin: '0.5rem',
-              backgroundColor: 'gainsboro',
+              width: '14.28%',
+              textAlign: 'center',
+              padding: '1rem 0',
+              backgroundColor: 'lavender',
             }}
           >
             {label}
           </div>
         ))}
+        {dates.map(({ key, label, onSelect, isSelected, disabled }) => (
+          <div
+            onClick={onSelect}
+            key={key}
+            style={{
+              backgroundColor: isSelected ? 'lightpink' : 'lightgoldenrodyellow',
+              cursor: disabled ? 'default' : 'pointer',
+              width: '14.28%',
+              textAlign: 'center',
+              padding: '1rem 0',
+            }}
+          >
+            <span style={{ color: disabled ? 'lightgray' : 'inherit' }}>{label}</span>
+          </div>
+        ))}
       </div>
       <div>{currentDate.toString()}</div>
+      <div>{displayDate}</div>
     </div>
   );
 };
