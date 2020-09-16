@@ -1,4 +1,4 @@
-type DateFormat = 'yyyy-MM-dd' | 'yy-MM-dd' | 'MM/dd/yyyy' | 'MM/dd/yy';
+export type DateFormat = 'yyyy-MM-dd' | 'yy-MM-dd' | 'MM/dd/yyyy' | 'MM/dd/yy';
 
 export type DateOverflow = 'blanks' | 'dates';
 
@@ -41,11 +41,13 @@ export interface PickrDate {
 
 export interface PickrBag {
   currentDate: Date;
+  currentRange: DateRange;
   displayDate: string;
   dates: PickrDate[];
   onSelectNextRange: () => void;
   onSelectPrevRange: () => void;
   dayOfWeekLabels: string[];
+  monthLabels: string[];
   currentMonthLabel: string;
   currentYearLabel: string;
 }

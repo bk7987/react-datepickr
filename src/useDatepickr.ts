@@ -30,7 +30,6 @@ export const useDatepickr = ({
   );
 
   const onDateSelected = (date: Date) => {
-    console.log(date);
     setCurrentDate(date);
   };
 
@@ -69,10 +68,12 @@ export const useDatepickr = ({
   return {
     dates: getPickrDates(),
     currentDate,
+    currentRange,
     displayDate: format(currentDate, dateDisplayFormat),
     onSelectNextRange,
     onSelectPrevRange,
     dayOfWeekLabels: Object.values(dayOfWeekLabels),
+    monthLabels: Object.values(monthLabels),
     currentMonthLabel: monthLabels[getMonth(currentRange.start)],
     currentYearLabel: getYear(currentRange.start).toString(),
   };

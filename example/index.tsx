@@ -15,7 +15,7 @@ const App = () => {
     currentYearLabel,
   } = useDatepickr({
     padDates: true,
-    rangeOverflow: 'dates',
+    rangeOverflow: 'blanks',
   });
   return (
     <div>

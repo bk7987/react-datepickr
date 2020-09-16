@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
+    "test": "tsdx test --passWithNoTests --coverage",
     "test:watch": "npm run test -- --watchAll",
     "lint": "tsdx lint",
     "prepare": "tsdx build"
@@ -50,5 +50,10 @@
   },
   "dependencies": {
     "date-fns": "^2.16.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ]
   }
 }
