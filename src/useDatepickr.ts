@@ -21,7 +21,7 @@ export const useDatepickr = ({
   dayOfWeekLabels = DAY_OF_WEEK_LABELS,
   monthLabels = MONTH_LABELS,
   disabled = () => false,
-}: PickrConfig): PickrBag => {
+}: PickrConfig = {}): PickrBag => {
   const [currentDate, setCurrentDate] = useState(toDate(initialDate));
   const [currentRange, setCurrentRange] = useState<DateRange>(
     initialRange
